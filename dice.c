@@ -1,6 +1,6 @@
 /*
- * dice.c: Draws a simple dice using Cairo and GTK+ which is rolled by
- *         pressing ENTER or pressing a mouse button. Exit with 'q'.
+ * dice.c: Draws a simple double dice using Cairo and GTK+ which is rolled
+ * by pressing ENTER or pressing a mouse button. Exit with 'q'.
  *
  * Copyright 2009 (c) Gaute Hope <eg@gaute.vetsj.com>
  *
@@ -19,10 +19,10 @@
 GtkWidget *window;
 int       one, two;
 
-void      roll ();
-static    gboolean on_expose_event (GtkWidget*, GdkEventExpose*, gpointer);
-void      draw_dice (cairo_t *cr, int dice, int START, int WIDTH,
-                     int HEIGHT);
+void              roll ();
+void              draw_dice (cairo_t *, int, int, int, int);
+static gboolean   on_expose_event (GtkWidget*, GdkEventExpose*, gpointer);
+
 
 static gboolean on_key_press (GtkWidget *widget,
                               GdkEventKey *event,
@@ -67,7 +67,7 @@ void draw_dice (cairo_t *cr, int dice, int START, int WIDTH, int HEIGHT) {
     case 3:
       cairo_arc (cr, START + WIDTH / 4, START_T + HEIGHT - HEIGHT / 4, 20, 0, 2*M_PI);
 
-      cairo_arc (cr, START + WIDTH/4 + WIDTH/2, START_T + HEIGHT - HEIGHT / 4, 20, 0, 2*M_PI);
+      cairo_arc (cr, START + WIDTH / 4 + WIDTH / 2, START_T + HEIGHT - HEIGHT / 4, 20, 0, 2*M_PI);
       cairo_stroke_preserve (cr);
       cairo_fill (cr);
       cairo_arc (cr, START + WIDTH / 2, START_T + HEIGHT /4, 20, 0, 2*M_PI);
@@ -77,24 +77,24 @@ void draw_dice (cairo_t *cr, int dice, int START, int WIDTH, int HEIGHT) {
     case 4:
       cairo_arc (cr, START + WIDTH / 4, START_T + HEIGHT - HEIGHT / 4, 20, 0, 2*M_PI);
 
-      cairo_arc (cr, START + WIDTH/4 + WIDTH/2, START_T + HEIGHT - HEIGHT / 4, 20, 0, 2*M_PI);
+      cairo_arc (cr, START + WIDTH / 4 + WIDTH / 2, START_T + HEIGHT - HEIGHT / 4, 20, 0, 2*M_PI);
       cairo_stroke_preserve (cr);
       cairo_fill (cr);
       cairo_arc (cr, START + WIDTH / 4, START_T + HEIGHT / 4, 20, 0, 2*M_PI);
 
-      cairo_arc (cr, START + WIDTH/4 + WIDTH/2, START_T + HEIGHT/ 4, 20, 0, 2*M_PI);
+      cairo_arc (cr, START + WIDTH / 4 + WIDTH / 2, START_T + HEIGHT/ 4, 20, 0, 2*M_PI);
       cairo_stroke_preserve (cr);
       cairo_fill (cr);
       break;
     case 5:
       cairo_arc (cr, START + WIDTH / 4, START_T + HEIGHT - HEIGHT / 6, 20, 0, 2*M_PI);
 
-      cairo_arc (cr, START + WIDTH/4 + WIDTH/2, START_T + HEIGHT - HEIGHT / 6, 20, 0, 2*M_PI);
+      cairo_arc (cr, START + WIDTH / 4 + WIDTH / 2, START_T + HEIGHT - HEIGHT / 6, 20, 0, 2*M_PI);
       cairo_stroke_preserve (cr);
       cairo_fill (cr);
       cairo_arc (cr, START + WIDTH / 4, START_T + HEIGHT / 6, 20, 0, 2*M_PI);
 
-      cairo_arc (cr, START + WIDTH/4 + WIDTH/2, START_T + HEIGHT/ 6, 20, 0, 2*M_PI);
+      cairo_arc (cr, START + WIDTH / 4 + WIDTH / 2, START_T + HEIGHT/ 6, 20, 0, 2*M_PI);
       cairo_stroke_preserve (cr);
       cairo_fill (cr);
       cairo_arc (cr, START + WIDTH / 2, START_T + HEIGHT / 2, 20, 0, 2*M_PI);
@@ -104,17 +104,17 @@ void draw_dice (cairo_t *cr, int dice, int START, int WIDTH, int HEIGHT) {
     case 6:
       cairo_arc (cr, START + WIDTH / 4, START_T + HEIGHT - HEIGHT / 6, 20, 0, 2*M_PI);
 
-      cairo_arc (cr, START + WIDTH/4 + WIDTH/2, START_T + HEIGHT - HEIGHT / 6, 20, 0, 2*M_PI);
+      cairo_arc (cr, START + WIDTH / 4 + WIDTH / 2, START_T + HEIGHT - HEIGHT / 6, 20, 0, 2*M_PI);
       cairo_stroke_preserve (cr);
       cairo_fill (cr);
       cairo_arc (cr, START + WIDTH / 4, START_T + HEIGHT / 6, 20, 0, 2*M_PI);
 
-      cairo_arc (cr, START + WIDTH/4 + WIDTH/2, START_T + HEIGHT/ 6, 20, 0, 2*M_PI);
+      cairo_arc (cr, START + WIDTH / 4 + WIDTH / 2, START_T + HEIGHT/ 6, 20, 0, 2*M_PI);
       cairo_stroke_preserve (cr);
       cairo_fill (cr);
       cairo_arc (cr, START + WIDTH / 4, START_T + HEIGHT / 2, 20, 0, 2*M_PI);
 
-      cairo_arc (cr, START + WIDTH/4 + WIDTH/2, START_T + HEIGHT/ 2, 20, 0, 2*M_PI);
+      cairo_arc (cr, START + WIDTH / 4 + WIDTH / 2, START_T + HEIGHT/ 2, 20, 0, 2*M_PI);
       cairo_stroke_preserve (cr);
       cairo_fill (cr);
 
